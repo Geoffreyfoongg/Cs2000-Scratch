@@ -44,3 +44,7 @@ end
 Sunglasses(pants-decider(98))
 
 Sunglasses(pants-decider(0))
+
+Sunglasses(pants-decider(88))
+
+pants-decider(22)
