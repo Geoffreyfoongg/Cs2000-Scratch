@@ -42,6 +42,7 @@ end
 
 transform-column(items, "x-coordinate", sub-10)
 
+
 fun less-10(n:: Number) -> Number:
   doc:"multiplies column numbers by 0.9 or 10% less"
   n * 0.9
@@ -49,14 +50,30 @@ where:
   less-10(100) is 90
   less-10(250) is 225
   less-10(-30) is -27
-end 
-
-#transform-column(items, "x-coordinate", less-10)
-#transform-column(items, "y-coordinate", less-10)
-
+  
+  check: 
+    test-table = table: x-coordinate :: Number
+      row: 23 
+      row: -45
+      row: 78 
+    end 
+  results-table = table: x-coordinate :: Number
+      row: 13 
+      row: -55
+      row: 68 
+    end 
+      lam(n :: Number) -> Number: n - 10 end is results-table
+  end
+end
+ 
+transform-column(test-table, "x-coordinate", less-10)
+transform-column(items, "y-coordinate", less-10)
 
 scaled-item-distance = build-column(items, "distance", distance)
 transform-column(scaled-item-distance, "distance", num-to-rational)
 
 order-by(get-row(0, "x-coordinate"))
+
+
+scatter-plot(item, "x-coordinate", "y-coordinate")
 
