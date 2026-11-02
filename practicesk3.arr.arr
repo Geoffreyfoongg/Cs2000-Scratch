@@ -46,7 +46,7 @@ fun all-increasing(lst :: List<Number>) -> Boolean block:
     if is-first:
       is-first := false
     else: 
-      when n <= previous:
+      when n < previous:
         total := false
         end
     end
@@ -78,3 +78,91 @@ where:
   sum-list([list: ]) is 0
   sum-list([list: 2, 3, 5,]) is 10
 end 
+
+
+# Q1: count-evens (count)
+
+# Design a function count-evens that takes a list of numbers and returns how many are even.
+
+fun count-evens(lst :: List<Number>) -> Number block:
+  doc: "returns how many numbers within a list are even"
+  
+  var total = 0
+  
+  for each( n from lst):
+   
+    when num-modulo(n, 2) == 0:
+      total := total + 1
+    
+  end 
+  end
+  total
+where: 
+  count-evens([list: 2, 4, 8, 3]) is 3
+  count-evens([list: ]) is 0 
+end
+      
+
+
+# Q2: product-all (combine every item)
+
+# Design a function product-all that takes a list of numbers and returns all of them multiplied together. It should return 1 for the empty list.
+
+fun product-all(lst :: List<Number>) -> Number block:
+  doc: "takes a list of numbers and multiplies each item by the other items"
+  
+  var total = 1
+  
+  for each(n from lst):
+    
+    total := total * n 
+  end
+  total
+where: 
+  product-all([list: 2, 4]) is 8
+  product-all([list: ]) is 1
+end
+  
+    
+
+# Q3: has-empty-string ("any": start false)
+
+# Design a function has-empty-string that takes a list of strings and returns true if any of them is "".
+
+fun has-empty-string(lst :: List<String>) -> Boolean block:
+  doc: "Returns true if a given list has empty strings in them"
+  
+  var total = false
+  
+  for each(n from lst):
+    when n == "":
+      total := true
+    end
+  end
+  total
+where:
+  has-empty-string([list: "", "yes"]) is true
+  has-empty-string([list: "yes"]) is false
+end
+      
+      
+#     Q4: all-under-100 ("all": start true)
+
+# Design a function all-under-100 that takes a list of numbers and returns true if every number is less than 100.
+
+fun all-under-100(lst :: List<Number>) -> Boolean block:
+  doc: "returns true if every item within a list is less than 100"
+  
+  var total = true
+  
+  for each(n from lst): 
+    
+    if (n < 100):
+      true
+      
+    else: 
+      false
+    end
+  end
+end
+      
