@@ -44,3 +44,13 @@ fun is-popular(b :: Book) -> Boolean:
     |sales-ranking(title, position) => position <= 500
   end
 where:
+  good-rating = rating("hi", 4, 500) 
+  bad-rating = rating("hi", 4, 499)
+  good-ranking = sales-ranking("hi", 4, 499)
+  bad-ranking = sales-ranking("hi", 4, 500)
+  
+  good-rating(rating) is true
+  good-ranking(sales-ranking) is true
+  bad-rating(rating) is false
+  bad-ranking(sales-ranking) is false 
+end
